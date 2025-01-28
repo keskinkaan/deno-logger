@@ -1,11 +1,11 @@
 # @kinbay/logger
 
-A simple and lightweight logger for Deno applications with colorful output and multiple log levels.
+A simple and lightweight logger for Deno and Browser applications with colorful output.
 
 ## Features
 
-- 🦕 Built for Deno with browser compatibility
-- 🎨 Colorful console output (terminal colors in Deno, CSS colors in browser)
+- 🦕 Cross-platform support (Deno and Browser)
+- 🎨 Adaptive colorful output (terminal colors in Deno, CSS colors in browser)
 - 🔄 Singleton pattern for consistent logging
 - 📊 Five log levels (DEBUG, INFO, SUCCESS, WARN, ERROR)
 - ⚙️ Configurable log states
@@ -87,6 +87,20 @@ Example:
 ```
 [INFO][12:34:56.789][APP] Starting application...
 ```
+
+## Platform Specific Behavior
+
+### Deno
+
+- Uses terminal color codes
+- Full timestamp support
+- Native console formatting
+
+### Browser
+
+- Uses CSS colors
+- Full timestamp support
+- Browser-friendly console output
 
 ## Contributing
 
