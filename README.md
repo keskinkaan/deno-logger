@@ -14,17 +14,24 @@ A simple and lightweight logger for Deno and Browser applications with colorful 
 
 ## Installation
 
-```typescript
-import { Logger } from 'jsr:@kinbay/logger';
+```sh
+deno add jsr:@kinbay/logger
+```
+
+Add the following to your `deno.json` file:
+
+```json
+{
+	"imports": {
+		"@logger": "jsr:@kinbay/logger"
+	}
+}
 ```
 
 ## Usage
 
 ```typescript
-import { Logger } from 'jsr:@kinbay/logger';
-
-// Get logger instance
-const logger = Logger.getInstance();
+import { logger } from '@logger';
 
 // Basic logging with different levels
 logger.log('Starting application...', 'INFO', 'APP');
@@ -70,7 +77,8 @@ Log states (ELogState) control which messages are displayed:
 Set the minimum log state to control output:
 
 ```typescript
-const logger = Logger.getInstance();
+import { logger } from '@logger';
+
 logger.setLogLevel(3); // Show INFO and above
 ```
 

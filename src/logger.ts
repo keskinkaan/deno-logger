@@ -159,7 +159,7 @@ export class Logger {
 					this.#logLevel = ELogLevel.ERROR;
 					if (this.#isDeno()) {
 						this.#consoleText =
-							`[\u001b[38;5;214mWarn\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;214m${nameSpace}\u001b[0m]`;
+							`[\u001b[38;5;196mError\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;196m${nameSpace}\u001b[0m]`;
 					} else {
 						this.#consoleText = null;
 						this.#color = 'color: GoldenRod';

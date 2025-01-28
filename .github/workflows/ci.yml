@@ -19,11 +19,5 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Verify formatting
-        run: deno task prettify --check
-
-      - name: Run linter
-        run: deno task lint
-
-      - name: Check types
-        run: deno task check
+      - name: Run pre-commit checks
+        run: deno task pre-commit

@@ -1,16 +1,26 @@
 {
   "name": "@kinbay/logger",
-  "version": "0.1.1",
-  "description": "A simple logger for Deno",
+  "version": "0.2.0",
+  "description": "A simple logger for Deno and Browser",
   "license": "MIT",
   "exports": {
     ".": "./mod.ts"
   },
+  "publish": {
+    "exclude": [
+      "**/*.test.ts",
+      "coverage/",
+      ".github/",
+      "deno.lock"
+    ]
+  },
   "tasks": {
     "dev": "deno run --watch main.ts",
-    "prettify": "deno fmt",
+    "prettify": "deno fmt **/*.ts",
     "check": "deno check **/*.ts",
-    "lint": "deno lint **/*.ts"
+    "lint": "deno lint **/*.ts",
+    "test": "deno test -A **/*.test.ts",
+    "pre-commit": "deno task prettify && deno task lint && deno task check && deno task test"
   },
   "fmt": {
     "lineWidth": 80,
@@ -24,6 +34,13 @@
     ]
   },
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "deno": {
+    "version": "2.1.4"
   }
 }
