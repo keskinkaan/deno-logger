@@ -159,4 +159,4 @@ export class Logger {
 	}
 }
 
-export const logger = Logger.getInstance();
+export const logger: Logger = Logger.getInstance();
