@@ -11,6 +11,7 @@
       "**/*.test.ts",
       "coverage/",
       ".github/",
+      ".gitignore",
       "deno.lock"
     ]
   },
