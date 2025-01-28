@@ -1,0 +1,26 @@
+{
+  "name": "@kinbay/logger",
+  "version": "0.1.0",
+  "description": "A simple logger for Deno",
+  "license": "MIT",
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "prettify": "deno fmt",
+    "check": "deno check **/*.ts",
+    "lint": "deno lint **/*.ts"
+  },
+  "fmt": {
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "useTabs": true,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "always",
+    "include": [
+      "**/*.ts"
+    ]
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}
