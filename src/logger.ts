@@ -38,20 +38,23 @@ export class Logger {
 
 	#fd(): string {
 		const dt = new Date();
-		return `${String(dt.getHours()).padStart(2, '0')}:${String(
-			dt.getMinutes()
-		).padStart(2, '0')}:${String(dt.getSeconds()).padStart(2, '0')}.${String(
-			dt.getMilliseconds()
-		).padStart(3, '0')}`;
+		return `${String(dt.getHours()).padStart(2, '0')}:${
+			String(
+				dt.getMinutes(),
+			).padStart(2, '0')
+		}:${String(dt.getSeconds()).padStart(2, '0')}.${
+			String(
+				dt.getMilliseconds(),
+			).padStart(3, '0')
+		}`;
 	}
 
 	#setLog(msg: unknown, consoleText: string | null) {
-		this.#message =
-			msg instanceof Error
-				? `${msg.message}\n ${msg.stack}`
-				: typeof msg === 'object'
-				? JSON.stringify(msg, null, 2)
-				: msg;
+		this.#message = msg instanceof Error
+			? `${msg.message}\n ${msg.stack}`
+			: typeof msg === 'object'
+			? JSON.stringify(msg, null, 2)
+			: msg;
 
 		if (consoleText !== null) {
 			console.log(`${consoleText} ${this.#message as string}`);
@@ -62,15 +65,13 @@ export class Logger {
 				typeof this.#message === 'boolean'
 			) {
 				console.log(
-					`[%c${this.#logLevel}%c][%c${this.#fd()}%c][%c${this.#nameSpace}%c] ${
-						this.#message
-					}`,
+					`[%c${this.#logLevel}%c][%c${this.#fd()}%c][%c${this.#nameSpace}%c] ${this.#message}`,
 					this.#color,
 					this.#colorWhite,
 					this.#colorSlateGray,
 					this.#colorWhite,
 					this.#color,
-					this.#colorWhite
+					this.#colorWhite,
 				);
 			} else {
 				console.log(
@@ -81,7 +82,7 @@ export class Logger {
 					this.#colorWhite,
 					this.#color,
 					this.#colorWhite,
-					this.#message
+					this.#message,
 				);
 			}
 		}
@@ -90,7 +91,7 @@ export class Logger {
 	public log(
 		msg: unknown,
 		logLevel: TLogLevel = ELogLevel.INFO,
-		nameSpace = 'APP'
+		nameSpace = 'APP',
 	) {
 		this.#nameSpace = nameSpace;
 
@@ -99,7 +100,8 @@ export class Logger {
 				if (this.#logState >= ELogState.Error) {
 					this.#logLevel = ELogLevel.ERROR;
 					if (this.#isDeno()) {
-						this.#consoleText = `[\u001b[38;5;214mWarn\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;214m${nameSpace}\u001b[0m]`;
+						this.#consoleText =
+							`[\u001b[38;5;214mWarn\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;214m${nameSpace}\u001b[0m]`;
 					} else {
 						this.#consoleText = null;
 						this.#color = 'color: GoldenRod';
@@ -111,7 +113,8 @@ export class Logger {
 				if (this.#logState >= ELogState.Warn) {
 					this.#logLevel = ELogLevel.WARN;
 					if (this.#isDeno()) {
-						this.#consoleText = `[\u001b[38;5;214mWarn\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;214m${nameSpace}\u001b[0m]`;
+						this.#consoleText =
+							`[\u001b[38;5;214mWarn\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;214m${nameSpace}\u001b[0m]`;
 					} else {
 						this.#consoleText = null;
 						this.#color = 'color: GoldenRod';
@@ -123,7 +126,8 @@ export class Logger {
 				if (this.#logState >= ELogState.Info) {
 					this.#logLevel = ELogLevel.INFO;
 					if (this.#isDeno()) {
-						this.#consoleText = `[\u001b[38;5;75mInfo\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;75m${nameSpace}\u001b[0m]`;
+						this.#consoleText =
+							`[\u001b[38;5;75mInfo\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;75m${nameSpace}\u001b[0m]`;
 					} else {
 						this.#consoleText = null;
 						this.#color = 'color: SkyBlue';
@@ -135,7 +139,8 @@ export class Logger {
 				if (this.#logState >= ELogState.Success) {
 					this.#logLevel = ELogLevel.SUCCESS;
 					if (this.#isDeno()) {
-						this.#consoleText = `[\u001b[38;5;49mSuccess\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;49m${nameSpace}\u001b[0m]`;
+						this.#consoleText =
+							`[\u001b[38;5;49mSuccess\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;49m${nameSpace}\u001b[0m]`;
 					} else {
 						this.#consoleText = null;
 						this.#color = 'color: SpringGreen';
@@ -147,7 +152,8 @@ export class Logger {
 				if (this.#logState >= ELogState.Debug) {
 					this.#logLevel = ELogLevel.DEBUG;
 					if (this.#isDeno()) {
-						this.#consoleText = `[\u001b[38;5;33mDebug\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;33m${nameSpace}\u001b[0m]`;
+						this.#consoleText =
+							`[\u001b[38;5;33mDebug\u001b[0m][\u001b[38;5;247m${this.#fd()}\u001b[0m][\u001b[38;5;33m${nameSpace}\u001b[0m]`;
 					} else {
 						this.#consoleText = null;
 						this.#color = 'color: violet';

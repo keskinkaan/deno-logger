@@ -1,3 +1,3 @@
-import type { TLogState, TLogLevel } from './src/types/mod.ts';
+import type { TLogLevel, TLogState } from './src/types/mod.ts';
 
-export type { TLogState, TLogLevel };
+export type { TLogLevel, TLogState };
