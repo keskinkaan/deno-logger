@@ -1,14 +1,14 @@
 {
   "name": "@kinbay/logger",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A simple logger for Deno and Browser",
   "license": "MIT",
-  "readme": "./README.md",
   "exports": {
     ".": "./mod.ts"
   },
   "publish": {
     "exclude": [
+      "hooks/",
       "**/*.test.ts",
       "coverage/",
       ".github/",
